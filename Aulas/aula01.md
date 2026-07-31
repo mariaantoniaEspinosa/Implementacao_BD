@@ -12,7 +12,7 @@
   - Atributos compostos são um conjunto de informações (ex: endereço tem número, cep e rua);
   - Atributos do tipo "telefone(1, n)" significam atributos multivalorados, ou seja, o funcionário pode ter 1 ou n telefones;
   - BRModelo Jar: baixar!
-
+  - Exemplo de Modelo Conceitual, Lógico e Físico
 <img width="411" height="198" alt="image" src="https://github.com/user-attachments/assets/8814df82-00b3-4e8c-a105-76386eefbe0f" />
 <br>
 <img width="227" height="247" alt="image" src="https://github.com/user-attachments/assets/21a7d34b-489e-4884-9ee0-f449764eb7ab" />
