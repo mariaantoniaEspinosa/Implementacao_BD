@@ -1,0 +1,5 @@
+- Notas:
+  - Nota 1: exercícios em aula (3,0) + prova (7,0);
+  - Nota 2: exercícios em aula (3,0) + prova (7,0);
+  - Nota 3: atividade avaliativa (10,0);
+-*obs*: pode ser trazida uma folha a4 ou a3 para a prova.
