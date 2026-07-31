@@ -14,14 +14,23 @@
   - BRModelo Jar: baixar!
   - Para relacionar mais de uma tabela é necessário colocar um losango entre a linha que conecta ambas, chamado de "alocação".
   - No relacionamento de duas tabelas é necessário definir a cardinalidade entre elas.
+  - O n puxa a chave estrangeira para ele (relação de cardinalidade)
+  - Não deve haver uma representação da chave estrangeira no modelo conceitual.
  
     
   - Exemplo de Modelo Conceitual, Lógico e Físico
 <img width="411" height="198" alt="image" src="https://github.com/user-attachments/assets/8814df82-00b3-4e8c-a105-76386eefbe0f" />
 <br>
 <img width="227" height="247" alt="image" src="https://github.com/user-attachments/assets/21a7d34b-489e-4884-9ee0-f449764eb7ab" />
-
 <img width="236" height="216" alt="image" src="https://github.com/user-attachments/assets/ccf91a86-74b3-4b92-a878-e9a3c23882e6" />
+
+
+<img width="880" height="213" alt="image" src="https://github.com/user-attachments/assets/493e2f2e-db9c-421f-8b72-c079e2829a60" />
+<br>
+<img width="512" height="296" alt="image" src="https://github.com/user-attachments/assets/c18e9cab-d5e1-4d45-ad4c-7801d3ced2b8" />
+
+
+
 
 
 
