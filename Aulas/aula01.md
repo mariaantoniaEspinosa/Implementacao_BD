@@ -14,8 +14,15 @@
   - BRModelo Jar: baixar!
   - Para relacionar mais de uma tabela é necessário colocar um losango entre a linha que conecta ambas, chamado de "alocação".
   - No relacionamento de duas tabelas é necessário definir a cardinalidade entre elas.
-  - O n puxa a chave estrangeira para ele (relação de cardinalidade)
+  - Na relação de cardinalidade com n, o n puxa a chave estrangeira para ele 
   - Não deve haver uma representação da chave estrangeira no modelo conceitual.
+  - Pode haver outro losango representando outro relacionamento, por exemplo "gerência"
+  - Na relação de cardinalidade sem n, a chave estrangeira deve ficar do lado que haverá menor nulidade
+    - entre 1,1 e 0,1 a chave vai de 1,1 para 0,1
+  - Em uma terceira tabela, com uma relação "trabalha", com cardinalidade de Funcionário (n,) e Projeto (n,), é necessário criar uma tabela nova por causa do relacionamento n para n, que pode ser representada por uma "bandeira do brasil" (losango com qudrado = entidade assossiativa).
+  - O nome da nova tabela oriunda da relação nXn é a junção dos nomes das duas tabelas relacionadas.
+  - A nova tabela terá uma chave primária composta.
+  - Posso colocar atributos nas relações (losangos)
  
     
   - Exemplo de Modelo Conceitual, Lógico e Físico
@@ -29,6 +36,10 @@
 <br>
 <img width="512" height="296" alt="image" src="https://github.com/user-attachments/assets/c18e9cab-d5e1-4d45-ad4c-7801d3ced2b8" />
 
+
+<img width="988" height="424" alt="image" src="https://github.com/user-attachments/assets/b0913df1-b260-4f66-bbc9-95b39ea52cbe" />
+<br>
+<img width="1105" height="331" alt="image" src="https://github.com/user-attachments/assets/f61ab1c7-b4dd-4263-a28f-0beba099ea15" />
 
 
 
