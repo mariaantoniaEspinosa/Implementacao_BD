@@ -89,5 +89,9 @@ DROP COLUMN genero;
 ALTER TABLE autor
 MODIFY COLUMN nacionalidade CHAR(2);
 
+-- Alterando nome de uma coluna
+ALTER TABLE livro
+CHANGE id ISBN VARCHAR(20);
+
 ```
 <img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/9d50f32d-634b-4df4-b818-3d289d27703b" />
