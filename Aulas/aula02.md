@@ -45,3 +45,26 @@
 - roll back
 - commit
 ### DDL 
+# Prática de aula
+```sql
+
+-- Criando meu banco
+CREATE DATABASE biblioteca;
+-- Colocar o banco criado em uso
+USE biblioteca;
+-- Criando minha primeira tabela
+CREATE TABLE autor(
+	id INT PRIMARY KEY,
+    nome VARCHAR(200) NOT NULL,
+    nacionalidade VARCHAR(100)
+);
+-- Criando minha segunda tabela com chave estrangeira
+CREATE TABLE livro(
+	id INT PRIMARY KEY,
+    titulo TEXT,
+    ano_publicacao YEAR,
+    fk_id_autor INT, 
+    FOREIGN KEY (fk_id_autor) REFERENCES autor(id)
+);
+```
+<img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/9d50f32d-634b-4df4-b818-3d289d27703b" />
