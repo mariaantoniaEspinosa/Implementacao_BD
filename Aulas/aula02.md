@@ -95,3 +95,86 @@ CHANGE id ISBN VARCHAR(20);
 
 ```
 <img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/9d50f32d-634b-4df4-b818-3d289d27703b" />
+
+# Exemplo 02
+```sql
+CREATE DATABASE biblioteca;
+USE biblioteca;
+
+CREATE TABLE autor(
+	id_autor INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(200) NOT NULL,
+    nacionalidade VARCHAR(100) NOT NULL,
+    ano_nascimento YEAR
+);
+
+CREATE TABLE livro(
+	ISBN CHAR(13) PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    ano_publicacao YEAR,
+    fk_id_autor INT,
+    fk_id_editora INT,
+    FOREIGN KEY (fk_id_autor) REFERENCES autor(id_autor),
+    FOREIGN KEY (fk_id_editora) REFERENCES editora(id)
+);
+
+CREATE TABLE editora(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cidade VARCHAR(50),
+    site VARCHAR(100),
+    ano_fundacao YEAR
+);
+
+INSERT INTO autor (nome, nacionalidade, ano_nascimento)
+VALUES ("Machado de Assis", "brasileiro", 1939);
+
+INSERT INTO autor
+VALUES (NULL, "George Orwell", "britânico", 1903);
+
+INSERT INTO autor
+VALUES (NULL, "Juca da silva", "brasileiro", 2010);
+
+-- Recuperando as informações
+SELECT * FROM autor;
+
+INSERT INTO editora (nome, cidade, site, ano_fundacao)
+VALUES 
+	("Companhia das Letras", "São Paulo", "www.cdl.br", 1986),
+	("Penguin Books", "Londres", "www.pmg.ldm", 1935);
+    
+SELECT * FROM editora;
+
+INSERT INTO livro (titulo, ISBN, ano_publicacao, fk_id_autor, fk_id_editora)
+VALUES 
+	("Dom Casmurro", "987456", 1910, 1, 1),
+	("1984", "123456", 1949, 2, 2);
+    
+TRUNCATE livro;
+
+DELETE FROM autor
+WHERE autor.id_autor = 3;
+
+UPDATE autor
+SET autor.nacionalidade = "Brasileiro"
+WHERE autor.id_autor = 1;
+
+-- operadores WHERE: =, <, <=, >, >=, <> OU !=, BETWEEN, LIKE, AND , OR
+
+SELECT l.titulo, l.ano_publicacao
+FROM livro AS l
+WHERE l.titulo LIKE "%Dom%";
+
+SELECT 
+	l.titulo AS "Titulo",
+    l.ano_publicacao AS "Ano",
+	CONCAT (a.nome, "/", a.nacionalidade) AS "Autor/Nacionalidade",
+    e.nome AS "Editora"
+FROM livro AS l
+JOIN autor AS a ON l.fk_id_autor = a.id_autor -- junção das duas tabelas 
+JOIN editora AS e ON l.fk_id_editora = e.id 
+               
+```
+
+<img width="695" height="213" alt="image" src="https://github.com/user-attachments/assets/e3c356af-d615-4ead-908a-ef39d717ba4f" />
+
