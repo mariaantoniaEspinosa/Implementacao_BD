@@ -52,12 +52,14 @@
 CREATE DATABASE biblioteca;
 -- Colocar o banco criado em uso
 USE biblioteca;
+
 -- Criando minha primeira tabela
 CREATE TABLE autor(
 	id INT PRIMARY KEY,
     nome VARCHAR(200) NOT NULL,
     nacionalidade VARCHAR(100)
 );
+
 -- Criando minha segunda tabela com chave estrangeira
 CREATE TABLE livro(
 	id INT PRIMARY KEY,
@@ -67,13 +69,25 @@ CREATE TABLE livro(
     FOREIGN KEY (fk_id_autor) REFERENCES autor(id)
 );
 
-
-
 -- Excluindo uma tabela
 DROP TABLE nome_tabela;
+
 -- Adicionando FK via alteração
 ALTER TABLE livro
 ADD CONSTRAINT fk_autor -- nome da restrição
 FOREIGN KEY (fk_id_autor) REFERENCES autor(id);
+
+-- Adicionando uma coluna
+ALTER TABLE livro
+ADD genero VARCHAR(100) NOT NULL;
+
+-- Remover uma coluna
+ALTER TABLE livro
+DROP COLUMN genero;
+
+-- Modificar tipo de uma coluna
+ALTER TABLE autor
+MODIFY COLUMN nacionalidade CHAR(2);
+
 ```
 <img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/9d50f32d-634b-4df4-b818-3d289d27703b" />
