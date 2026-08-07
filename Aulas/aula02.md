@@ -66,5 +66,14 @@ CREATE TABLE livro(
     fk_id_autor INT, 
     FOREIGN KEY (fk_id_autor) REFERENCES autor(id)
 );
+
+
+
+-- Excluindo uma tabela
+DROP TABLE nome_tabela;
+-- Adicionando FK via alteração
+ALTER TABLE livro
+ADD CONSTRAINT fk_autor -- nome da restrição
+FOREIGN KEY (fk_id_autor) REFERENCES autor(id);
 ```
 <img width="387" height="188" alt="image" src="https://github.com/user-attachments/assets/9d50f32d-634b-4df4-b818-3d289d27703b" />
