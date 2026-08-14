@@ -277,3 +277,48 @@ SELECT
 FROM FUNCIONARIO AS F
 ORDER BY F.Salario DESC;
 ```
+
+- **VALORES NULOS/NULL**
+- É um campo **sem valor**
+- Registro sem adição de um valor específico ao campo = foi deixado em branco durante a criação do registro
+- operadores: IS NULL e IS NOT NULL
+- Encontrando os funcionários que não possuem supervisores
+```sql
+SELECT *
+FROM FUNCIONARIO AS F 
+WHERE F.Cpf_supervisor IS NULL;
+```
+- Encontrando os funcionários que possuem supervisores
+```sql
+SELECT *
+FROM FUNCIONARIO AS F 
+WHERE F.Cpf_supervisor IS NOT NULL;
+```
+
+- **SELECT TOP**
+- Específica o número de registros a serem retornados
+- operador: TOP
+- MySQL: Limit
+- Recuperando o registro dos 3 funcionários que têm maior salário
+```sql
+SELECT TOP 3 *
+FROM FUNCIONARIO AS F 
+ORDER BY F.Salario DESC;
+```
+
+###
+
+- **FUNÇÃO MIN() MAX()**
+- Min(): retorna o valor mais baixo da coluna selecionada
+- Max(): retorna o valor mais alto da coluna selecionada
+- Recuperando as informações do funcionário com menor salário
+```sql
+SELECT MIN (Salario)
+FROM FUNCIONARIO;
+
+-- SELECT ALINHADO 
+
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Salario = (SELECT MIN(Salario) FROM FUNCIONARIO);
+```
