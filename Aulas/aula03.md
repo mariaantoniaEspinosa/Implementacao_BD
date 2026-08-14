@@ -212,7 +212,7 @@ WHERE <Condição>
 ```
 ###
 
-- **Select DISTINCT**
+## Select DISTINCT
 - Usada para retornar apenas valores distintos (diferentes). Dentro de uma tabela, uma coluna muitas vezes contém muitos valores duplicados e, às vezes, você só deseja listar os valores diferentes (distintos).
 - Listando as diferentes faixas salariais dos funcionarios
 ```sql
@@ -226,7 +226,7 @@ SELECT DISTINCT F.SEXO
 FROM FUNCIONARIO AS F;
 ```
 
-- **Cláusula WHERE**
+## Cláusula WHERE 
 - Usada para extrair apenas os registros que atendem a uma condição especifica.
 - Recuperando todas as informações dos funcionários com primeiro nome "João"
 ```sql
@@ -235,7 +235,7 @@ FROM FUNCIONARIO AS F
 WHERE F.Pnome = 'João';
 ```
 
-- **SQL AND, OR and NOT**
+## SQL AND, OR and NOT
 - Usados para filtrar registros com base em mais de uma condição:
   - AND: exige um registro se todas as condições separadas por "and" forem **verdadeiras*
   - OR: exibe um registro se alguma das condições separadas por "or" for **verdadeira*
@@ -259,7 +259,7 @@ FROM FUNCIONARIO AS F
 WHERE NOT F.Endereco LIKE '%São Paulo%';
 ```
 
-- **ORDER BY**
+## ORDER BY
 - Usada para classificar o conjunto de resultados em ordem ascendente ou descendente
 - Listando os funcionários em ordem decrescente de salário
 ```sql
@@ -278,7 +278,7 @@ FROM FUNCIONARIO AS F
 ORDER BY F.Salario DESC;
 ```
 
-- **VALORES NULOS/NULL**
+## VALORES NULOS/NULL
 - É um campo **sem valor**
 - Registro sem adição de um valor específico ao campo = foi deixado em branco durante a criação do registro
 - operadores: IS NULL e IS NOT NULL
@@ -295,7 +295,7 @@ FROM FUNCIONARIO AS F
 WHERE F.Cpf_supervisor IS NOT NULL;
 ```
 
-- **SELECT TOP**
+## SELECT TOP 
 - Específica o número de registros a serem retornados
 - operador: TOP
 - MySQL: Limit
@@ -308,7 +308,7 @@ ORDER BY F.Salario DESC;
 
 ###
 
-- **FUNÇÃO MIN() MAX()**
+## FUNÇÃO MIN() MAX()
 - Min(): retorna o valor mais baixo da coluna selecionada
 - Max(): retorna o valor mais alto da coluna selecionada
 - Recuperando as informações do funcionário com menor salário
