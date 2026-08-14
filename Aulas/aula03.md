@@ -377,5 +377,8 @@ FROM FUNCIONARIO AS F;
 
 - Recuperando os funcionários nascidos no ano de 72
 ```sql
-
+-- LIKE 
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Datanasc LIKE '__72%';
 ```
