@@ -252,7 +252,7 @@ SELECT *
 FROM FUNCIONARIO AS F
 WHERE F.Endereco LIKE '%São Paulo%' OR F.Endereco LIKE '%Curitiba%';
 ```
-- Listando os funcionários que não moram em São Paulo
+- Listando os funcionários que não (NOT) moram em São Paulo
 ```sql
 SELECT *
 FROM FUNCIONARIO AS F
