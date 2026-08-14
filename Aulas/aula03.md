@@ -332,3 +332,50 @@ SELECT *
 FROM FUNCIONARIO AS F 
 WHERE F.Salario = @salario_min;
 ```
+
+## FUNÇÕES COUNT(), AVG() E SUM()
+- Count(): retorna o numero de linhas que correspondem a um critério específico
+- Avg(): retorna um valor médio de uma coluna numérica
+- Sum(): retorna a soma total de uma coluna numérica
+- Quantos funcionários possuímos cadastrados no banco?
+```sql
+-- COUNT ()
+SELECT COUNT (F.Cpf)
+FROM FUNCIONARIO AS F;
+
+SELECT COUNT (D.Nome_dependente)
+FROM DEPENDENTE AS D;
+
+SELECT 
+	(SELECT COUNT (F.Cpf) FROM FUNCIONARIO AS F) + 
+	(SELECT COUNT (D.Nome_dependente) FROM DEPENDENTE AS D)
+	AS "Qtd Pessoas";
+```
+
+- Qual a média salarial dos meus funcionários?
+```sql
+-- AVG()
+SELECT AVG (F.Salario)
+FROM FUNCIONARIO AS F;
+
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Salario < (SELECT AVG (F.Salario) FROM FUNCIONARIO AS F)
+ORDER BY F.Salario ASC;
+```
+
+- Qual o custo mensal com a folha de pagamento dos funcionários?
+```sql
+-- SUM()
+SELECT SUM (F.Salario)
+FROM FUNCIONARIO AS F; 
+```
+
+## OPERADOR LIKE
+- Usado em uma cláusula WHERE para pesquisar um padrão específico em uma coluna
+<img width="823" height="261" alt="image" src="https://github.com/user-attachments/assets/253a32eb-a825-4561-a901-9c26c84c58e1" />
+
+- Recuperando os funcionários nascidos no ano de 72
+```sql
+
+```
