@@ -69,6 +69,7 @@ WHERE
 
 
 ```
+
 ## OPERADOR BETWEEEN
 - Seleciona valores dentro de um determinado intervalo, podendo ser números, texto ou datas
 - É um operador inclusivo: os valores de início e fim estão incluídos
@@ -79,9 +80,11 @@ SELECT *
 FROM FUNCIONARIO AS F
 WHERE F.Dnr = 5 AND F.Salario BETWEEN 30000 AND 40000;
 ```
+
 ## ALIASES
 - Dão um nome temporário a uma tabela ou a uma coluna em uma tabela
 - É criado com a palavra-chave AS
+  
 # JOINS
 ## INNER JOIN
 - Retorna registros que possuem valores correspondentes em ambas as tabelas
@@ -96,6 +99,17 @@ FROM FUNCIONARIO AS F
 INNER JOIN DEPARTAMENTO AS D 
 ON F.Dnr = D.Dnumero -- vínculo entre tabela 1 e tabela 2
 WHERE D.Dnome = 'Pesquisa';
+```
+- Listando o nome dos funcionários que estão desenvolvendo o "ProdutoX".
+```sql
+
+SELECT F.Pnome, F.Minicial, F.Unome, T.Horas, P.Projnome
+FROM TRABALHA_EM AS T
+INNER JOIN PROJETO AS P
+ON T.Pnr = P.Projnumero
+INNER JOIN FUNCIONARIO AS F
+ON T.Fcpf = F.Cpf
+WHERE P.Projnome = 'ProdutoX';
 ```
 
 ## LEFT JOIN
