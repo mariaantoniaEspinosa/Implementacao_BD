@@ -145,18 +145,43 @@ LEFT JOIN DEPARTAMENTO AS D
 ON F.Dnr = D.Dnumero;
 ```
 
+- Encontre os departamentos que não possuem funcionários a eles vinculados
+```sql
+-- Encontre os departamentos que não possuem funcionários a eles vinculados (SÃO NULOS)
+SELECT *
+FROM DEPARTAMENTO AS D
+LEFT JOIN FUNCIONARIO AS F
+ON F.Dnr = D.Dnumero
+WHERE F.Cpf IS NULL;
+```
+
 ## RIGHT JOIN 
 - Retorna registros da tabela direita e os registros correspondentes da tabela esquerda
 <img width="267" height="161" alt="image" src="https://github.com/user-attachments/assets/cfaa0e79-3f7e-4cf5-be15-2c7148b117f5" />
 
+- Encontre os departamentos que não possuem nenhum funcionário
 ```sql
-
+-- RIGHT JOIN
+SELECT *
+FROM FUNCIONARIO AS F
+RIGHT JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+WHERE F.Cpf IS NULL;
 ```
 
 ## CROSS JOIN
 - Retorna todos os registros de ambas as tabelas
 <img width="242" height="152" alt="image" src="https://github.com/user-attachments/assets/0fa00de8-2f6c-463c-a8ff-58c0f95874cd" />
 
+- Teste entre as relações Funcionários e Departamento
 ```sql
 
+-- FULL JOIN -> TANTO FAZ A ORDEM, POIS PEGA TODAS AS INFORMAÇÕES 
+SELECT *
+FROM FUNCIONARIO AS F
+FULL JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+WHERE
+	D.Dnumero IS NULL
+	OR F.Cpf IS NULL;
 ```
