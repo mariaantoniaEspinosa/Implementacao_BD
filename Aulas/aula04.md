@@ -112,12 +112,37 @@ ON T.Fcpf = F.Cpf
 WHERE P.Projnome = 'ProdutoX';
 ```
 
+- Para cada projeto localizado em “Mauá”, liste o número do projeto, o número do departamento que o
+controla e o sobrenome, endereço e data de nascimento do gerente do departamento.
+```sql
+-- substituindo o cpf pelo nome do funcionario, incluindo último nome e endereço
+SELECT 
+	D.Dnome, 
+	P.Projlocal, 
+	P.Projlocal, 
+	D.Cpf_gerente, 
+	F.Unome,
+	F.Endereco
+FROM DEPARTAMENTO AS D 
+INNER JOIN PROJETO AS P
+ON P.Dnum = D.Dnumero
+INNER JOIN FUNCIONARIO AS F
+ON F.Cpf = D.Cpf_gerente
+WHERE P.Projlocal = 'Mauá';
+```
+
 ## LEFT JOIN
 - Retorna registros da tabela esquerda e os registros correspondentes da tabela direita
 <img width="241" height="157" alt="image" src="https://github.com/user-attachments/assets/e3d47ebd-2bff-4b0a-b638-a441035c4505" />
 
+- Liste o último nome de todos os funcionários e os respectivos departamentos
 ```sql
+--LEFT JOIN
 
+SELECT * 
+FROM FUNCIONARIO AS F
+LEFT JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero;
 ```
 
 ## RIGHT JOIN 
