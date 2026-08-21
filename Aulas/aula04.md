@@ -90,7 +90,8 @@ WHERE F.Dnr = 5 AND F.Salario BETWEEN 30000 AND 40000;
 - Selecionando o primeiro nome, último nome, endereço dos funcionários que trabalham no departamento "Pesquisa"
 ```sql
 -- INNER JOIN 
-SELECT *
+
+SELECT F.Pnome, F.Unome, F.Endereco, D.Dnome
 FROM FUNCIONARIO AS F
 INNER JOIN DEPARTAMENTO AS D 
 ON F.Dnr = D.Dnumero -- vínculo entre tabela 1 e tabela 2
