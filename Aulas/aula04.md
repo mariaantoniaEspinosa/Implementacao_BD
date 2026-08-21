@@ -50,4 +50,22 @@ WHERE
 	F.Cpf = T.Fcpf
 	AND T.Pnr IN (2, 3,10, 20)
 	AND F.Pnome <> 'Fernando';
+
+
+-- ARRUMANDO O SELECT - DEIXANDO ALINHADO  
+
+SELECT F.Pnome, T.Pnr
+FROM TRABALHA_EM AS T, FUNCIONARIO AS F
+WHERE 
+	F.Cpf = T.Fcpf
+	AND F.Pnome <> 'Fernando'
+	AND T.Pnr IN (
+		SELECT T.Pnr 
+		FROM TRABALHA_EM AS T 
+		WHERE T.Fcpf = 
+			(SELECT F.Cpf
+			FROM FUNCIONARIO AS F
+			WHERE F.Pnome = 'Fernando'));
+
+
 ```
