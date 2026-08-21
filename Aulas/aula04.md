@@ -185,3 +185,43 @@ WHERE
 	D.Dnumero IS NULL
 	OR F.Cpf IS NULL;
 ```
+
+## SELF JOIN
+- Uma junção automática é uma junção regular, mas a tabela é unida a si mesma
+- Criando uma consulta que mostra apenas os funcionários que têm um supervisor
+
+```sql
+-- SELF JOIN
+SELECT *
+FROM FUNCIONARIO AS F1
+JOIN FUNCIONARIO AS F2
+ON F1.Cpf_supervisor = F2.Cpf;
+
+SELECT 
+	F.Pnome AS 'Funcionario',
+	S.Unome AS 'Supervisor'
+FROM FUNCIONARIO AS F
+JOIN FUNCIONARIO AS S
+ON F.Cpf_supervisor = S.Cpf
+ORDER BY 'Supervisor';
+```
+
+## SQL UNION/INTERSECT/EXCEPT
+```sql
+-- UNION: Listar todos os nomes, sexo e data de nascimento de todas as pessoas do banco.
+
+SELECT 
+	F.Pnome AS 'Nome',
+	F.Sexo AS 'Sexo',
+	F.Datanasc AS 'Data'
+FROM FUNCIONARIO AS F
+
+UNION
+
+SELECT 
+	D.Nome_dependente AS 'Nome',
+	D.Sexo AS 'Sexo',
+	D.Datanasc AS 'Data'
+FROM DEPENDENTE AS D
+
+```
