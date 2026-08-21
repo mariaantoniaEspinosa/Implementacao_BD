@@ -69,3 +69,13 @@ WHERE
 
 
 ```
+## OPERADOR BETWEEEN
+- Seleciona valores dentro de um determinado intervalo, podendo ser números, texto ou datas
+- É um operador inclusivo: os valores de início e fim estão incluídos
+- Recuperar todos os funcionários no departamento 5 cujo salário esteja entre R$30.000 e R$40.000
+```sql
+-- BETWEEN
+SELECT *
+FROM FUNCIONARIO AS F
+WHERE F.Dnr = 5 AND F.Salario BETWEEN 30000 AND 40000;
+```
