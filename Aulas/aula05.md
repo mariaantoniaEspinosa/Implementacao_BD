@@ -165,3 +165,67 @@ WHERE Salario > ALL (
 	)
 ORDER BY Salario;
 ```
+
+# VARIÁVEIS 
+- Variáveis podem ser declaradas no corpo de um batch ou procedimento.
+- Pode-se atribuir-lhes valores usando-se declarações SET ou SELECT
+- As variáveis são inicializadas por padrão com NULL
+- *batch* refere-se a um grupo de uma ou mais (por exemplo utilizando GO) instruções SQL que são enviadas juntas do cliente para o servidor de banco de dados para serem executadas como uma única unidade de trabalho
+- Exemplo 01: aprendendo a declarar e a printar 
+```sql
+-- VARIÁVEIS --
+-- DECLARE 
+DECLARE @nome VARCHAR(100),
+		@idade INT,
+		@salario DECIMAL(10,2),
+		@data DATE;
+SET @nome = 'Maria Antônia';
+SET @idade = 20;
+SET @salario = 2400.00;
+SET @data = GETDATE();
+PRINT 'Nome: ' + @nome + ', Idade: ' + CAST(@idade AS VARCHAR(10));
+SELECT 
+	@nome AS 'Nome',
+	@idade AS 'Idade',
+	@salario AS 'Salário',
+	@data AS 'Data de hoje';
+GO
+-- o bloco todo precisa ser executado junto 
+```
+- Exemplo 02: Recupere o nome do departamento com Dnumero = 4.
+```
+DECLARE @nomeDpt VARCHAR(50);
+
+SELECT @nomeDpt = Dnome
+FROM DEPARTAMENTO AS D
+WHERE D.Dnumero = 4
+
+PRINT 'Departamento: ' + @nomeDpt;
+```
+
+- Exemplo 03: Calculando o novo salário com um aumento de 10%, para a Jennifer
+```
+DECLARE @salario DECIMAL(10,2),
+		@novoSalario DECIMAL (10,2),
+		@nome VARCHAR(100);
+SET @nome = 'Jennifer';
+SELECT @salario = F.Salario
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = @nome;
+SET @novoSalario = @salario * 1.1;
+PRINT 'Salario: ' + CAST(@salario AS VARCHAR (10));
+PRINT 'Novo salario: ' + CAST(@novoSalario AS VARCHAR (10));
+```
+
+-Exemplo: calculando a idade da Jennifer
+```sql
+--calculando a idade da Jennifer
+DECLARE @data_nasc DATE,
+		@idade INT;
+
+SELECT @data_nasc = F.Datanasc
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = 'Jennifer';
+SET @idade = YEAR(GETDATE()) - YEAR(@data_nasc);
+PRINT 'A Jaennifer tem ' + CAST(@idade AS VARCHAR(5)) + ' anos';
+```
