@@ -193,7 +193,7 @@ GO
 -- o bloco todo precisa ser executado junto 
 ```
 - Exemplo 02: Recupere o nome do departamento com Dnumero = 4.
-```
+```sql
 DECLARE @nomeDpt VARCHAR(50);
 
 SELECT @nomeDpt = Dnome
@@ -204,7 +204,7 @@ PRINT 'Departamento: ' + @nomeDpt;
 ```
 
 - Exemplo 03: Calculando o novo salário com um aumento de 10%, para a Jennifer
-```
+```sql
 DECLARE @salario DECIMAL(10,2),
 		@novoSalario DECIMAL (10,2),
 		@nome VARCHAR(100);
