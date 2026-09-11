@@ -145,3 +145,7 @@ GO
 
 SELECT * FROM dbo.fn_salarioAnual();
 ```
+## STORED PROCEDURE
+- São lotes (batches) de declarações SQL que podem ser executados como uma subrotina.
+- Permitem centralizar a lógica de acesso aos dados em único local, facilitando a manutenção e otimização de código.
+- Também é possível ajustar permissões de acesso aos usuários, definindo quem pode ou não executá-las
