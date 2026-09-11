@@ -149,3 +149,80 @@ SELECT * FROM dbo.fn_salarioAnual();
 - São lotes (batches) de declarações SQL que podem ser executados como uma subrotina.
 - Permitem centralizar a lógica de acesso aos dados em único local, facilitando a manutenção e otimização de código.
 - Também é possível ajustar permissões de acesso aos usuários, definindo quem pode ou não executá-las
+```SQL
+-- STORED PROCEDURE
+CREATE PROCEDURE sp_exibe_meu_nome
+AS 
+BEGIN
+	PRINT 'Maria Antônia';
+END
+GO
+
+EXEC sp_exibe_meu_nome;
+GO
+
+--FAZENDO O AUMENTO DO SÁLARIO DOS FUNCIONARIOS
+CREATE OR ALTER PROCEDURE sp_aumento(
+@porcentagem DECIMAL(3,1),
+@cpf CHAR (11)
+)
+AS 
+BEGIN
+	UPDATE FUNCIONARIO
+	SET Salario = Salario * (1+(@porcentagem/100))
+	WHERE  cpf = @cpf
+END;
+GO
+
+EXEC dbo.sp_aumento @porcentagem = 5, @cpf = '98765432300';
+SELECT * FROM FUNCIONARIO;
+	
+SELECT COUNT(*) FROM FUNCIONARIO
+
+EXEC sp_help sp_aumento;
+GO
+
+-- PROCEDURE CRIPTROGRAFADO 
+CREATE PROCEDURE sp_funcionarios
+WITH ENCRYPTION 
+AS
+SELECT * FROM FUNCIONARIO;
+GO
+EXEC sp_help sp_fuuncionarios;
+GO
+
+-- PROCEDURE QUE INSERE UM NOVO DEPARTAMENTO NO BANCO COM SUA RESPECTIVA LOCALIDADE
+CREATE OR ALTER PROCEDURE sp_add_dpt_loc (
+	@dpt_nome VARCHAR (50),
+	@dpt_numero INT,
+	@local VARCHAR (50))
+AS
+BEGIN 
+	IF EXISTS ( SELECT 1 FROM DEPARTAMENTO
+				WHERE Dnome = @dpt_nome)
+		BEGIN 
+			PRINT 'JÁ EXISTO:   ' + @dpt_nome;
+			RETURN;
+		END
+	ELSE 
+		BEGIN 
+			INSERT INTO DEPARTAMENTO (Dnome, Dnumero)
+			VALUES (@dpt_nome, @dpt_numero);
+
+			INSERT INTO LOCALIZACAO_DEP (Dnumero, Dlocal)
+			VALUES (@dpt_numero, @local);
+			PRINT 'DEPARTAMENTO INSERIDO:  ' + @dpt_nome;
+			PRINT 'LOCAL INSERIDO:  ' + @local;
+		END 
+END
+GO
+
+EXEC sp_add_dpt_loc 'COMPRAS', 130, 'SANTA MARIA';
+
+SELECT *
+FROM DEPARTAMENTO AS D
+JOIN LOCALIZACAO_DEP AS L
+ON D.Dnumero = L.Dnumero;
+
+```
+### PROV: pode trazer folha A4 com cola para prova, escrita dos dois lados, à mão!!!
