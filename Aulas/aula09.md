@@ -107,3 +107,10 @@ DECLARE @salario_total DECIMAL (10,2)
 EXEC sp_calcula_soma_salario 5, @salario_total OUTPUT;
 PRINT 'O SALÁRIO TOTAL É: ' + CAST (@salario_total AS VARCHAR(10));
 ```
+# PROVA
+- 4 a 5 questões de marcar sobre as cláusulas
+- em torno de 2 a 3 questões de montar consultas, simples com regras de montar tabelas "me liste as editoras com nenhum livro atrelado a elas"
+- atenção com as funções, declare e questões realizadas em lista de exercícios
+- stored procedure = última aula
+- dicas:
+  - fracionar os problemas para serem resolvidos
