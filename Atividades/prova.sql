@@ -12,8 +12,8 @@ WHERE HE.Identificacao_turma = (select T.Identificacao_turma
 								WHERE D.Nome_disciplina = 'Banco de dados')
 
 
--- 8) Quais s„o as disciplinas que tÍm prÈ-requisitos e quais s„o seus respctivos prÈ-requisitos
-SELECT D.Nome_disciplina AS Disciplina_com_PrÈ_Requisito, Dd.Nome_disciplina as prÈ_quequisito
+-- 8) Quais s√£o as disciplinas que t√™m pr√©-requisitos e quais s√£o seus respctivos pr√©-requisitos
+SELECT D.Nome_disciplina AS Disciplina_com_Pr√©_Requisito, Dd.Nome_disciplina as pr√©_quequisito
 FROM PRE_REQUISITO AS PQ
 INNER JOIN DISCIPLINA AS D
 ON PQ.Numero_disciplina = D.Numero_disciplina
@@ -38,8 +38,8 @@ WHERE T.Identificacao_turma IN (select he.Identificacao_turma
 								where he.Numero_aluno = @N_ALUNO) 
 
 
---10) Crie uma funÁao (recebe o nome do aluno em quest„o, e a respectiva disciplina) que verifique se o aluno APROVADO,esta em RECUPERA«√O, ou REPROVADO com base na nota final:
--- A e B = APROVADO, C = RECUPERA«√O, F = REPROVADO
+--10) Crie uma fun√ßao (recebe o nome do aluno em quest√£o, e a respectiva disciplina) que verifique se o aluno APROVADO,esta em RECUPERA√á√ÉO, ou REPROVADO com base na nota final:
+-- A e B = APROVADO, C = RECUPERA√á√ÉO, F = REPROVADO
 
 CREATE FUNCTION fn_situacaoAluno (@nome varchar(100), @disciplina varchar(15))
 RETURNS VARCHAR (15)
@@ -57,7 +57,7 @@ BEGIN
 	IF @nota = 'A' OR @nota = 'B'
 		set @situacao = 'APROVADO'
 	ELSE IF @nota = 'C'
-		set @situacao = 'EM RECUPERA«√O'
+		set @situacao = 'EM RECUPERA√á√ÉO'
 	ELSE IF @nota = 'F'
 		SET @situacao = 'REPROVADO'
 	RETURN @situacao
@@ -66,7 +66,7 @@ END
 select dbo.fn_situacaoAluno ('Alice Oliveira','MAT2410') as situacao
 select dbo.fn_situacaoAluno ('Carla Souza','CC3380') as situacao
 
--- QUEST√O 12
+-- QUEST√ÉO 12
 CREATE FUNCTION fn_situacaoTurma (@turma int)
 RETURNS VARCHAR(30)
 AS
@@ -92,13 +92,13 @@ DECLARE @qtd_alunos int
 SELECT @qtd_alunos = COUNT (he.Numero_aluno)
 FROM HISTORICO_ESCOLAR AS HE
 where he.Identificacao_turma = 85
-SELECT D.Nome_disciplina,T.Identificacao_turma, @qtd_alunos as n_alunos, dbo.fn_situacaoTurma (85) as situaÁ„o
+SELECT D.Nome_disciplina,T.Identificacao_turma, @qtd_alunos as n_alunos, dbo.fn_situacaoTurma (85) as situa√ß√£o
 from turma as t
 INNER JOIN DISCIPLINA AS D
 ON T.Numero_disciplina = D.Numero_disciplina
 where t.Identificacao_turma = 85
 
---13) Crie um procedimento armazenado chamado usp_CalcularIdadeAluno que receba o n˙mero do aluno como par‚metro e exiba a idade correta do aluno
+--13) Crie um procedimento armazenado chamado usp_CalcularIdadeAluno que receba o n√∫mero do aluno como par√¢metro e exiba a idade correta do aluno
 create PROCEDURE usp_CalcularIdadeAluno (@n_aluno INT)
 AS
 BEGIN
@@ -108,12 +108,12 @@ BEGIN
 	SET @idade = DATEDIFF(YEAR,@data_nasc,GETDATE())
 	IF (MONTH(GETDATE()) < MONTH(@data_nasc) ) or (MONTH(GETDATE()) = MONTH(@data_nasc)  AND  DAY(GETDATE()) < DAY(@data_nasc))
 		set @idade = @idade - 1
-	print 'Idade do aluno '+CAST(@n_aluno as varchar(2)) + ' È de : ' + CAST (@idade as varchar (3))
+	print 'Idade do aluno '+CAST(@n_aluno as varchar(2)) + ' √© de : ' + CAST (@idade as varchar (3))
 END
 
 EXEC usp_CalcularIdadeAluno 2;
 
---14) Crie uma procedure chamada usp_AtualizarNota que receba o n˙mero do aluno, a identificaÁ„o da turma e a nova nota como parametro
+--14) Crie uma procedure chamada usp_AtualizarNota que receba o n√∫mero do aluno, a identifica√ß√£o da turma e a nova nota como parametro
 -- e atualize a nota do aluno no historico escolar e exiba uma mensagem de sucesso ou falha
 
 ALTER PROCEDURE usp_AtualizarNota (@n_aluno INT, @turma INT, @nota varchar(1))
@@ -128,10 +128,10 @@ BEGIN
 				where Numero_aluno = @n_aluno AND Identificacao_turma = @turma
 			end
 			else
-			print 'Erro ao atualizar a nota! N„o existe um turma com essa identificaÁ„o'
+			print 'Erro ao atualizar a nota! N√£o existe um turma com essa identifica√ß√£o'
 		end
 	ELSE
-	PRINT 'Erro ao atualizar a nota! N„o existe um aluno com esse n˙mero';
+	PRINT 'Erro ao atualizar a nota! N√£o existe um aluno com esse n√∫mero';
 END;
 
 EXEC usp_AtualizarNota 55, 112, 'C'
