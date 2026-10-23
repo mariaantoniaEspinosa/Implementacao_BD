@@ -1,0 +1,11 @@
+# Transações
+- commit 
+- rollback
+  - **A**tomicidade
+  - **C**onsistência
+  - **I**solamento
+  - **D**urabilidade
+- Begin Try
+- end
+- Begin catch
+- end
