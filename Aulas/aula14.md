@@ -1,0 +1,12 @@
+### Revisão da última aula
+- Triggers
+  - DML - insert - update - delete
+  - ECA - evento - condição - ação
+  - After ou For (=)
+  - Instead of
+  - inserted
+  - deleted
+  - updated(colunaA)
+- View
+  - tabela virtual
+  - consulta sql
